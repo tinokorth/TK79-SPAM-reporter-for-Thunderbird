@@ -2,6 +2,12 @@ async function buildRecipientsList () {
   try {
     const { forwardingAddresses } = await browser.storage.local.get({ forwardingAddresses: [] })
 
+    if (!forwardingAddresses.length) {
+      document.getElementById('recipients').innerText = 'No forwarding addresses configured! Go to extension settings to add some.'
+      document.getElementById('recipients').style.fontWeight = 'bold'
+      return
+    }
+
     for (const addressString of forwardingAddresses) {
       const option = document.createElement('button')
       const [, name, address] = addressString.match(/(.*)\s*<(.*)>/) ?? [null, null, addressString]
