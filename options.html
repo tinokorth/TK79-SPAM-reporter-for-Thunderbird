@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Forwarding Options</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 20px;
+    }
+    textarea {
+      width: 100%;
+      height: 200px;
+    }
+    button {
+      margin-top: 10px;
+      text-align: center;
+    }
+    span {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <h1>Configure Forwarding Addresses</h1>
+  <p>Enter the email addresses to which you want to forward messages. Add one address per line. You can also include a name with the <code>Name &lt;address&gt;</code> syntax.</p>
+  <textarea id="emails">example@example.com</textarea>
+  <button id="save">Save</button>
+  <span id="error"></span>
+  <script src="options.js"></script>
+</body>
+</html>
