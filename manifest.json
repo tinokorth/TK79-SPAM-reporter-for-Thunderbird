@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "One-Click Forward",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "David Trapp",
   "description": "Forward emails directly through a dropdown of predefined recipients",
   "permissions": [
