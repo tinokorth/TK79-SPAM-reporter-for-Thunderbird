@@ -15,7 +15,7 @@ async function buildRecipientsList () {
       if (name) option.title = address
       option.addEventListener('click', e => {
         try {
-          browser.runtime.sendMessage({ action: 'chooseRecipient', recipient: address, compose: e.shiftKey })
+          browser.runtime.sendMessage({ action: 'chooseRecipient', recipient: addressString, compose: e.shiftKey })
           window.close()
         } catch (e) {
           console.error(e)
