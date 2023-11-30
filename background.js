@@ -26,7 +26,7 @@ browser.runtime.onMessage.addListener(async (message) => {
       console.log(`Forwarding window opened with tabId: ${tab.id}`)
 
       if (!message.compose) {
-        await new Promise(resolve => setTimeout(resolve, 1000)) // Fails if called to quickly after beginForward!
+        await new Promise(resolve => setTimeout(resolve, 1500)) // Fails if called to quickly after beginForward!
         console.log('Sent:', await browser.compose.sendMessage(tab.id))
       }
     } catch (e) {
