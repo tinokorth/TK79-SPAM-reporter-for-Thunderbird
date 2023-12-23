@@ -3,16 +3,18 @@ async function buildRecipientsList () {
     const { forwardingAddresses } = await browser.storage.local.get({ forwardingAddresses: [] })
 
     var addressArray = [];
-    addressArray.push("is-spam@labs.sophos.com");
-    addressArray.push("spam@antispamgateway.comodo.com");
+    addressArray.push("SOPHOS <is-spam@labs.sophos.com>");
+    addressArray.push("XCITING <spam@antispamgateway.comodo.com>");
+	addressArray.push("Microsoft <junk@office365.microsoft.com>");
+	
     
-
     if (forwardingAddresses.length) {
       addressArray.push(forwardingAddresses);
     }
 
     for (const addressString of addressArray) {
-      const option = document.createElement('button')
+      const option = document.createElement('button');
+	  console.log(addressString);
       const [, name, address] = addressString.match(/(.*)\s*<(.*)>/) ?? [null, null, addressString]
       option.innerText = name?.replace(/^"|"$/g, '') ?? address
       if (name) option.title = address
