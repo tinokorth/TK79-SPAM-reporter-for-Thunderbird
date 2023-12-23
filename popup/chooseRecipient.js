@@ -14,7 +14,6 @@ async function buildRecipientsList () {
 
     for (const addressString of addressArray) {
       const option = document.createElement('button');
-	  console.log(addressString);
       const [, name, address] = addressString.match(/(.*)\s*<(.*)>/) ?? [null, null, addressString]
       option.innerText = name?.replace(/^"|"$/g, '') ?? address
       if (name) option.title = address
