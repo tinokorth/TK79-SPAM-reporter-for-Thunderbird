@@ -2,13 +2,16 @@ async function buildRecipientsList () {
   try {
     const { forwardingAddresses } = await browser.storage.local.get({ forwardingAddresses: [] })
 
-    if (!forwardingAddresses.length) {
-      document.getElementById('recipients').innerText = 'No forwarding addresses configured! Go to extension settings to add some.'
-      document.getElementById('recipients').style.fontWeight = 'bold'
-      return
+    var addressArray = [];
+    addressArray.push("is-spam@labs.sophos.com");
+    addressArray.push("spam@antispamgateway.comodo.com");
+    
+
+    if (forwardingAddresses.length) {
+      addressArray.push(forwardingAddresses);
     }
 
-    for (const addressString of forwardingAddresses) {
+    for (const addressString of addressArray) {
       const option = document.createElement('button')
       const [, name, address] = addressString.match(/(.*)\s*<(.*)>/) ?? [null, null, addressString]
       option.innerText = name?.replace(/^"|"$/g, '') ?? address
