@@ -16,19 +16,25 @@ async function getIdentityIdForMessage(messageId) {
 browser.runtime.onMessage.addListener(async (message) => {
   if (message.action === 'chooseRecipient') {
     try {
-      const messageId = await getMessageId()
-      const identityId = await getIdentityIdForMessage(messageId)
+      const messageId = await getMessageId();
+      const identityId = await getIdentityIdForMessage(messageId);
+	  const bAttachment = false;
+	  
+	  if (message.recipient.includes("@")) {
+		  const tab = await browser.compose.beginForward(messageId, "forwardAsAttachment", {
+			"to": [message.recipient],
+			"identityId": identityId
+		  });
+		  console.log(`Forwarding window opened with tabId: ${tab.id}`)
 
-      const tab = await browser.compose.beginForward(messageId, {
-        to: [message.recipient],
-        identityId
-      })
-      console.log(`Forwarding window opened with tabId: ${tab.id}`)
+		  if (!message.compose) {
+			await new Promise(resolve => setTimeout(resolve, 1500)) // Fails if called to quickly after beginForward!
+			console.log('Sent:', await browser.compose.sendMessage(tab.id))
+		  }		  
+	  }
 
-      if (!message.compose) {
-        await new Promise(resolve => setTimeout(resolve, 1500)) // Fails if called to quickly after beginForward!
-        console.log('Sent:', await browser.compose.sendMessage(tab.id))
-      }
+
+	  
     } catch (e) {
       console.error(e)
       browser.notifications.create({

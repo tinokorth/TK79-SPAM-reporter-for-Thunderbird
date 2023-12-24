@@ -17,3 +17,14 @@ Simply use the "Report SPAM" icon in the email and select the correct service th
 
 - This plugin is a fork of David Trapp's "One Click Forward" Add-On for Thunderbird (https://github.com/CherryDT/thunderbird-one-click-forward)
 - Spam icon (https://icons8.com/icon/S1yRwobTki43/spam) by Icons8 (https://icons8.com)
+
+## Version history
+
+### 1.1 (24.12.2023)
+
+- forwarding as attachment
+- added option to delete message after forwarding (standard: not enabled)
+
+### 1.0 (24.12.2023)
+
+Initial version
