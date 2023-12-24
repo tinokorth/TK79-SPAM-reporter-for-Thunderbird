@@ -22,6 +22,7 @@
     "default_popup": "popup/chooseRecipient.html"
   },
   "icons": {
+	"96": "icons/icons8-spam-96.png",	  
 	"64": "icons/icons8-spam-64.png",
 	"48": "icons/icons8-spam-48.png",
 	"32": "icons/icons8-spam-32.png",
