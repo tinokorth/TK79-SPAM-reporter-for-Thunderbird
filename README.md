@@ -20,10 +20,11 @@ Simply use the "Report SPAM" icon in the email and select the correct service th
 
 ## Version history
 
-### 1.1 (24.12.2023)
+### 1.1 (25.12.2023)
 
 - forwarding as attachment
 - added option to delete message after forwarding (standard: not enabled)
+- added option to mark message as junk
 
 ### 1.0 (24.12.2023)
 
