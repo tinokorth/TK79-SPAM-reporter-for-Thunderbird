@@ -1,4 +1,4 @@
-# TK79 SPAM reporter
+# TK79 SPAM reporter for Thunderbird
 
 Thunderbird add-on to forward emails directly to spam recognizion services of
 - Xcitium Antispam Gateway | https://enterprise.xcitium.com/security-solutions/email-security/antispam-gateway/
