@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
-  "name": "SPAM reporter for XCITING, SOPHOS and Microsoft365",
+  "name": "TK79 SPAM reporter for Thunderbird",
   "version": "1.0.0",
   "author": "Tino Korth",
-  "description": "Forward emails directly through a dropdown of predefined recipients",
+  "description": "Forward emails directly through a dropdown of predefined SPAM fighting services",
   "permissions": [
     "accountsRead",
     "messagesRead",
