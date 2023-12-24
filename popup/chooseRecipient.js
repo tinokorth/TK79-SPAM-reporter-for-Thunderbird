@@ -29,10 +29,10 @@ async function buildRecipientsList () {
 					document.getElementById('error').innerText = `Sending message failed! ${e}`
 				}
 			});
-			document.getElementById('recipients').appendChild(option)
+			document.getElementById('recipients').appendChild(option);
 		}
 	} catch (e) {
-		console.error(e)
+		console.error("error: "+e)
 		document.getElementById('error').innerText = `Loading options failed! ${e}`
 	}
 }

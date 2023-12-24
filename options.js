@@ -1,5 +1,6 @@
 async function saveOptions () {
 	let bMailDelete = 0;
+	let bSetJunk = 0;
 	
 	try {
 		const emails = document.getElementById('forwardingAddresses').value.split('\n').map(x => x.trim()).filter(x => x);
@@ -7,8 +8,11 @@ async function saveOptions () {
 		if (document.getElementById('maildelete').checked) {
 			bMailDelete = 1;
 		}
+		if (document.getElementById('setjunk').checked) {
+			bSetJunk = 1;
+		}
 	
-		await browser.storage.local.set({ "forwardingAddresses": emails, "maildelete": bMailDelete });
+		await browser.storage.local.set({ "forwardingAddresses": emails, "maildelete": bMailDelete, "setjunk": bSetJunk });
 	
 	} catch (e) {
 		console.error(e);
@@ -24,7 +28,7 @@ async function restore_options() {
 		let elem = document.getElementById(key);
 		
 		if (!elem) continue;
-		
+				
 		if (elem.type == "checkbox") {
 			elem.checked = prefs[key];
 		} else if (elem.getAttribute("type") == "radio") {

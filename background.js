@@ -18,19 +18,29 @@ browser.runtime.onMessage.addListener(async (message) => {
     try {
       const messageId = await getMessageId();
       const identityId = await getIdentityIdForMessage(messageId);
-	  const bAttachment = false;
+	  const messagedelete = await get_config("maildelete");
+	  const setjunk = await get_config("setjunk");
 	  
 	  if (message.recipient.includes("@")) {
 		  const tab = await browser.compose.beginForward(messageId, "forwardAsAttachment", {
 			"to": [message.recipient],
 			"identityId": identityId
 		  });
-		  console.log(`Forwarding window opened with tabId: ${tab.id}`)
 
 		  if (!message.compose) {
-			await new Promise(resolve => setTimeout(resolve, 1500)) // Fails if called to quickly after beginForward!
-			console.log('Sent:', await browser.compose.sendMessage(tab.id))
-		  }		  
+			await new Promise(resolve => setTimeout(resolve, 1500));
+			console.log('Sent:', await browser.compose.sendMessage(tab.id));
+		  }
+		  
+		  if (setjunk == 1) {
+				console.log("setting message #"+messageId+" as junk");
+				await browser.messages.update(messageId, {junk: true});
+				await new Promise(resolve => setTimeout(resolve, 500));			  
+		  }
+		  if (messagedelete == 1) {
+			  console.log("deleting message #"+messageId);
+			  await browser.messages.delete([messageId]);
+		  }
 	  }
 
 
@@ -45,3 +55,33 @@ browser.runtime.onMessage.addListener(async (message) => {
     }
   }
 })
+
+
+async function get_config(key) {
+	let prefs = await browser.storage.local.get();
+	for (let configKey of Object.keys(prefs)) {
+		
+		console.log("key("+configKey+") = value("+prefs[configKey]+")");
+
+		if (configKey == key) {
+			return prefs[configKey];
+		}
+	}
+	return null;
+}
+
+/**
+ * Returns the trash folder of the account a given message belongs to. The
+ * accountsRead permission is required.
+ */
+async function getTrashFolderForMessage(msgId) {
+    let msg = await messenger.messages.get(msgId);
+    let account = await messenger.accounts.get(msg.folder.accountId);
+	let folderPromise = account.folders.find(folder => folder.type == "trash");
+	let TrashFolder = null;
+	folderPromise.then((response) => {
+		TrashFolder = response;
+	});
+	console.log("getTrashFolderForMessage:"+folderPromise);
+    return TrashFolder;
+}
