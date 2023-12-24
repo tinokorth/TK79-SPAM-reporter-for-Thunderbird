@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "One-Click Forward",
-  "version": "1.0.2",
-  "author": "David Trapp",
+  "name": "SPAM reporter for XCITING, SOPHOS and Microsoft365",
+  "version": "1.0.0",
+  "author": "Tino Korth",
   "description": "Forward emails directly through a dropdown of predefined recipients",
   "permissions": [
     "accountsRead",
@@ -17,17 +17,20 @@
     "scripts": ["background.js"]
   },
   "message_display_action": {
-    "default_icon": "icons/forward-icon-16.png",
-    "default_title": "Quick Forward",
+    "default_icon": "icons/icons8-spam-16.png",
+    "default_title": "report SPAM",
     "default_popup": "popup/chooseRecipient.html"
   },
   "icons": {
-    "48": "icons/mail-forward-48.png"
+	"64": "icons/icons8-spam-64.png",
+	"48": "icons/icons8-spam-48.png"	
+	"32": "icons/icons8-spam-32.png",
+	"16": "icons/icons8-spam-16.png"	
   },
   "applications": {
     "gecko": {
-      "id": "one-click-forward@david-trapp.com",
-      "strict_min_version": "78.0"
+      "id": "t.korth+spamreporter@gmail.com",
+      "strict_min_version": "90.0"
     }
   },
   "options_ui": {

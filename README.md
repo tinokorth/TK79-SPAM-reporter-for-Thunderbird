@@ -1,7 +1,17 @@
-# One Click Forward
+# TK79 SPAM reporter
 
-Thunderbird add-on to forward emails directly through a dropdown of predefined recipients.
+Thunderbird add-on to forward emails directly to spam recognizion services of
+- Xcitium Antispam Gateway | https://enterprise.xcitium.com/security-solutions/email-security/antispam-gateway/
+- Sophos Email | https://www.sophos.com/de-de/products/sophos-email
+- Microsoft 365
 
-By David Trapp
+by Tino Korth
 
-Set the desired recipients in settings. Then, use the message toolbar button "Quick Forward" to open a dropdown with your predefined recipients and forward the email to them with one click. If you hold Shift while clicking a recipient, the compose window will stay open without actually sending the email, so you can add further changes to the email before sending it.
+Simply use the "Report SPAM" icon in the email and select the correct service that has not filtered out the SPAM message correctly.
+
+
+***********************
+* Special Thanks
+***********************
+
+This plugin is a fork of David Trapp's "One Click Forward" Add-On for Thunderbird (https://github.com/CherryDT/thunderbird-one-click-forward)
