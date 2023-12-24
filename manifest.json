@@ -23,13 +23,13 @@
   },
   "icons": {
 	"64": "icons/icons8-spam-64.png",
-	"48": "icons/icons8-spam-48.png"	
+	"48": "icons/icons8-spam-48.png",
 	"32": "icons/icons8-spam-32.png",
 	"16": "icons/icons8-spam-16.png"	
   },
   "applications": {
     "gecko": {
-      "id": "t.korth+spamreporter@gmail.com",
+      "id": "t.korth@gmail.com",
       "strict_min_version": "90.0"
     }
   },
